@@ -31,24 +31,25 @@ class InputScreen(QWidget):
         self.next.clicked.connect(self.next_screen)
         self.next.setStyleSheet("""
             QPushButton {
-                background-color: #27ae60;
+                background-color: #3498db;
                 color: white;
                 border: none;
-                padding: 12px 24px;
-                font-size: 16px;
+                padding: 15px 30px;
+                font-size: 18px;
                 font-weight: bold;
                 border-radius: 25px;
             }
             QPushButton:hover {
-                background-color: #229954;
+                background-color: #2980b9;
             }
             QPushButton:pressed {
-                background-color: #1e8449;
+                background-color: #1f618d;
             }
         """)
         next_layout.addWidget(self.next)
         self.layout.addLayout(next_layout)
         self.setLayout(self.layout)
+        self.layout.addWidget(self.next, alignment=Qt.AlignCenter)
 
     def setup(self, name, level, screen):
         self.name = name

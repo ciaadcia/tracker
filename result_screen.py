@@ -48,23 +48,20 @@ class ResultScreen(QWidget):
         back_btn = QPushButton("BACK")
         back_btn.clicked.connect(self.back)
         back_btn.setStyleSheet("""
-            QPushButton {
-                background-color: #e74c3c;
-                color: white;
-                border: none;
-                padding: 15px 30px;
-                font-size: 16px;
-                font-weight: bold;
-                border-radius: 999px;
-                min-height: 50px;
-                min-width: 130px;
+            QPushButton{
+                background:#3498db;
+                color:white;
+                border:none;
+                padding:15px 30px;
+                font-size:18px;
+                font-weight:bold;
+                border-radius:25px;
             }
-            QPushButton:hover {
-                background-color: #c0392b;
-                box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            QPushButton:hover{
+                background:#2980b9;
             }
-            QPushButton:pressed {
-                background-color: #a93226;
+            QPushButton:pressed{
+                background:#1f618d;
             }
         """)
         back_layout.addWidget(back_btn)

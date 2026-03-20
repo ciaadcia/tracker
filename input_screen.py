@@ -5,51 +5,63 @@ class InputScreen(QWidget):
     def __init__(self, stack):
         super().__init__()
         self.stack = stack
+
         self.layout = QVBoxLayout()
+        self.layout.setContentsMargins(30,10,30,10)
+        self.layout.setSpacing(0)
+
+        label_layout = QVBoxLayout()
 
         self.title = QLabel()
         self.title.setAlignment(Qt.AlignCenter)
-        self.title.setStyleSheet("font-size: 36px; font-weight: bold; color: #2c3e50;")
-        
+        self.title.setFixedHeight(40)
+        self.title.setStyleSheet("font-size:36px; font-weight:bold; color:#2c3e50; padding:0; margin:0;")
+
         self.subtitle1 = QLabel()
         self.subtitle1.setAlignment(Qt.AlignCenter)
-        self.subtitle1.setStyleSheet("font-size: 16px; color: #34495e;")
-        
+        self.subtitle1.setFixedHeight(20)
+        self.subtitle1.setStyleSheet("font-size:16px; color:#34495e; padding:0; margin:0;")
+
         self.subtitle2 = QLabel()
         self.subtitle2.setAlignment(Qt.AlignCenter)
-        self.subtitle2.setStyleSheet("font-size: 16px; color: #34495e;")
+        self.subtitle2.setFixedHeight(20)
+        self.subtitle2.setStyleSheet("font-size:16px; color:#34495e; padding:0; margin:0;")
 
-        self.layout.addWidget(self.title)
-        self.layout.addWidget(self.subtitle1)
-        self.layout.addWidget(self.subtitle2)
+        label_layout.addWidget(self.title)
+        label_layout.addWidget(self.subtitle1)
+        label_layout.addWidget(self.subtitle2)
+
+        self.layout.addLayout(label_layout)
 
         self.inputs = []
 
         next_layout = QHBoxLayout()
-        next_layout.addStretch(1)  
+        next_layout.addStretch()
+
         self.next = QPushButton("NEXT")
         self.next.clicked.connect(self.next_screen)
         self.next.setStyleSheet("""
-            QPushButton {
-                background-color: #3498db;
-                color: white;
-                border: none;
-                padding: 15px 30px;
-                font-size: 18px;
-                font-weight: bold;
-                border-radius: 25px;
+            QPushButton{
+                background:#3498db;
+                color:white;
+                border:none;
+                padding:15px 30px;
+                font-size:18px;
+                font-weight:bold;
+                border-radius:25px;
             }
-            QPushButton:hover {
-                background-color: #2980b9;
+            QPushButton:hover{
+                background:#2980b9;
             }
-            QPushButton:pressed {
-                background-color: #1f618d;
+            QPushButton:pressed{
+                background:#1f618d;
             }
         """)
+
         next_layout.addWidget(self.next)
+
         self.layout.addLayout(next_layout)
         self.setLayout(self.layout)
-        self.layout.addWidget(self.next, alignment=Qt.AlignCenter)
 
     def setup(self, name, level, screen):
         self.name = name
@@ -63,23 +75,24 @@ class InputScreen(QWidget):
         for i in self.inputs:
             self.layout.removeWidget(i)
             i.deleteLater()
+
         self.inputs = []
 
         for i in range(level):
             inp = QLineEdit()
             inp.setPlaceholderText(f"Input {i+1}")
             inp.setStyleSheet("""
-                QLineEdit {
-                    padding: 12px;
-                    font-size: 14px;
-                    border: 2px solid #bdc3c7;
-                    border-radius: 10px;
-                    background-color: #ecf0f1;
-                    margin: 8px 0;
+                QLineEdit{
+                    padding:12px;
+                    font-size:14px;
+                    border:2px solid #bdc3c7;
+                    border-radius:10px;
+                    background:#ecf0f1;
+                    margin:2px 0;
                 }
-                QLineEdit:focus {
-                    border-color: #3498db;
-                    background-color: white;
+                QLineEdit:focus{
+                    border-color:#3498db;
+                    background:white;
                 }
             """)
 
